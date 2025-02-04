@@ -29,13 +29,18 @@ struct Button
 };
 struct vizual
 {
-    int cletca[301];
+    int vid_nom;
     HDC blits;
-    // = txLoadImage("pixelarts/New Piskel(2).bmp")
+    // = txLoadImage("pixelarts/New Piskel(3).bmp")
     int clectka_x;
     int clectka_y;
     int x;
     int y;
+    void vid()
+    {
+        clectka_x = vid_nom / 10;
+        clectka_y = vid_nom % 10;
+    }
     void draw()
     {
         txTransparentBlt(txDC(), x, y, 32, 32, blits, 32*clectka_x, 32*clectka_y, TX_WHITE);
