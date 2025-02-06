@@ -27,7 +27,7 @@ struct Button
                 txMouseButtons() == 1 && visible);
     }
 };
-struct vizual
+struct Vizual
 {
     int vid_nom;
     HDC blits;
@@ -43,15 +43,32 @@ struct vizual
     }
     void draw()
     {
-        txTransparentBlt(txDC(), x, y, 32, 32, blits, 32*clectka_x, 32*clectka_y, TX_WHITE);
+        txTransparentBlt(txDC(), x, y, 96, 96, blits, 96*clectka_x, 96*clectka_y,TX_WHITE);
     }
 
 };
+
 //structuri_konec
+//function_start
+
+
+
+
+//function_konec
 int main()
 {
-txCreateWindow (640, 480);
+txCreateWindow (672, 480);
 string PAGE = "menu";
+Vizual vizual = {0 , txLoadImage("pixelarts/New Piskel (3).bmp") ,0 ,0 ,0 ,0};
+//karta_i_otrisovka_start
+int karta [35];
+
+karta[0],karta[1],karta[2],karta[3],karta[4],karta[5],karta[6] =        23 , 23 , 23 , 23 , 23 , 23 , 23;
+karta[7],karta[8],karta[9],karta[10],karta[11],karta[12],karta[13] =    23 , 22 , 22 , 22 , 22 , 22 , 23;
+karta[14],karta[15],karta[16],karta[17],karta[18],karta[19],karta[20] = 23 , 22 , 22 , 34 , 22 , 22 , 23;
+karta[21],karta[22],karta[23],karta[24],karta[25],karta[26],karta[27] = 23 , 22 , 22 , 22 , 22 , 22 , 23;
+karta[28],karta[29],karta[30],karta[31],karta[32],karta[33],karta[34] = 23 , 23 , 23 , 23 , 23 , 23 , 23;
+//karta_i_otrisovka_konec
 //knopki_sart
 Button btn[4];
 
@@ -60,6 +77,11 @@ btn[1] = {100, 150, 200, 40, "Правила игры", true};
 btn[2] = {100, 200, 200, 40, "Выход", true};
 btn[3] = {0, 0, 200, 40, "Назад", true};
 //knopki_konec
+//peremennie_start
+int timer = 0;
+int x_otrisovki = 0;
+int y_otrisovki = 0;
+//peremennie_konec
 //podgruzca_kartinok_start
 HDC fon = txLoadImage("pixelarts/fon.bmp");
 //podgruzca_kartinok_start
@@ -74,7 +96,7 @@ while(!btn[2].click())
     //menu_start
     if(PAGE == "menu")
     {
-        txBitBlt(txDC(), 0, 0, 800, 600, fon);
+        txBitBlt(txDC(), 0, 0, 672, 480, fon);
         btn[0].draw();
         btn[1].draw();
         btn[2].draw();
@@ -117,6 +139,28 @@ while(!btn[2].click())
     //game_start
     if(PAGE == "game")
     {
+        while(timer != 35)
+        {
+            vizual.vid_nom = karta[timer];
+            vizual.vid();
+            if (x_otrisovki >= 8)
+            {
+                x_otrisovki = 0;
+                y_otrisovki += 1;
+                if (y_otrisovki >= 5)
+                {
+                    y_otrisovki = 0;
+                }
+            }
+            vizual.x = 96 * x_otrisovki;
+            vizual.y = 96 * y_otrisovki;
+            vizual.draw();
+            timer = timer + 1;
+            x_otrisovki += 1;
+        }
+        timer = 0;
+
+
 
     }
     //game_start
