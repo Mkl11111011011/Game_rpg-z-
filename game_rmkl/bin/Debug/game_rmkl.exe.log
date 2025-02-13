@@ -2926,3 +2926,99 @@ Run file:	C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe
 Directory:	C:\Users\user\Desktop\xt_m\game_rmkl
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe, файл: C:\Users\user\Desktop\TX\TXLib.h, строка: 13772, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {2.9915e+008, 768, 2.9915e+008, 864} не полностью лежит внутри изображения-источника {0, 0, 288, 384}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x00000000004468F0 (64-bit), Flags: CMdRe0, Thread: 0x27A8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000040B52C in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: (anonymous namespace)::TX::_txError() at C:/Users/user/Desktop/TX/TXLib.h (10992)
+# 1 0x0000000000418034 in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: (anonymous namespace)::TX::txTransparentBlt() at C:/Users/user/Desktop/TX/TXLib.h (13771)
+
+# 2 0x000000000042A87C in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: Vizual::draw() at C:/Program Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/stdio.h (370):
+
+    368: {
+    369:   return __mingw_vfprintf( __stream, __format, __local_argv );
+=>  370: }
+    371: 
+    372: __mingw_ovr
+
+# 3 0x000000000041E69F in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: main() at C:/Users/user/Desktop/xt_m/game_rmkl/main.cpp (157):
+
+    155:                 }
+    156:             }
+=>  157:             vizual.x = 96 * x_otrisovki;
+    158:             vizual.y = 96 * y_otrisovki;
+    159:             vizual.draw();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Desktop\TX\TXLib.h
+Compiled:	Feb  6 2025 20:13:27, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Feb 11 2025 19:36:53
+
+Run file:	C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe
+Directory:	C:\Users\user\Desktop\xt_m\game_rmkl
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe, файл: C:\Users\user\Desktop\TX\TXLib.h, строка: 13772, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {2.9915e+008, 768, 2.9915e+008, 864} не полностью лежит внутри изображения-источника {0, 0, 288, 384}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x00000000004468F0 (64-bit), Flags: CMdRe0, Thread: 0x18FC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000040B52C in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: (anonymous namespace)::TX::_txError() at C:/Users/user/Desktop/TX/TXLib.h (10992)
+# 1 0x0000000000418034 in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: (anonymous namespace)::TX::txTransparentBlt() at C:/Users/user/Desktop/TX/TXLib.h (13771)
+
+# 2 0x000000000042A85C in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: Vizual::draw() at C:/Program Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/stdio.h (370):
+
+    368: {
+    369:   return __mingw_vfprintf( __stream, __format, __local_argv );
+=>  370: }
+    371: 
+    372: __mingw_ovr
+
+# 3 0x000000000041E6DD in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: main() at C:/Users/user/Desktop/xt_m/game_rmkl/main.cpp (159):
+
+    157:             vizual.x = 96 * x_otrisovki;
+    158:             vizual.y = 96 * y_otrisovki;
+=>  159:             vizual.draw();
+    160:             timer = timer + 1;
+    161:             x_otrisovki += 1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Desktop\TX\TXLib.h
+Compiled:	Feb 11 2025 19:37:08, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Feb 11 2025 19:37:25
+
+Run file:	C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe
+Directory:	C:\Users\user\Desktop\xt_m\game_rmkl
+
+--------------------------------------------------
