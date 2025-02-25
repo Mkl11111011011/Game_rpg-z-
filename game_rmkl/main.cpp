@@ -52,20 +52,20 @@ struct Vizual
 class Character
 {
 private:
-    //int sech[12];
+    int sech[12];
     //sech = {00, 10, 20, 01, 11, 21, 02, 12, 22, 03, 13, 23};
-    //sech[0] = 00;
-    //sech[1] = 10;
-    //sech[2] = 20;
-    //sech[3] = 01;
-    //sech[4] = 11;
-    //sech[5] = 21;
-    //sech[6] = 02;
-    //sech[7] = 12;
-    //sech[8] = 22;
-    //sech[9] = 03;
-    //sech[10] = 13;
-    //sech[11] = 23;
+    sech[0] = 00;
+    sech[1] = 10;
+    sech[2] = 20;
+    sech[3] = 01;
+    sech[4] = 11;
+    sech[5] = 21;
+    sech[6] = 02;
+    sech[7] = 12;
+    sech[8] = 22;
+    sech[9] = 03;
+    sech[10] = 13;
+    sech[11] = 23;
     int a = 0;
     int b = 0;
     public:
