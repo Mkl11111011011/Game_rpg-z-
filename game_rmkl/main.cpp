@@ -52,29 +52,17 @@ struct Vizual
 class Character
 {
 private:
-    int sech[12];
-    //sech = {00, 10, 20, 01, 11, 21, 02, 12, 22, 03, 13, 23};
-    sech[0] = 00;
-    sech[1] = 10;
-    sech[2] = 20;
-    sech[3] = 01;
-    sech[4] = 11;
-    sech[5] = 21;
-    sech[6] = 02;
-    sech[7] = 12;
-    sech[8] = 22;
-    sech[9] = 03;
-    sech[10] = 13;
-    sech[11] = 23;
+    int clectka_x = 0;
+    int clectka_y = 0;
     int a = 0;
     int b = 0;
+    int kon = 0;
     public:
     int x;
     int y;
-    int clectka_x;
-    int clectka_y;
     int index;
     HDC blits;
+    int sech[12];
     bool vizible;
     bool r;
     bool l;
@@ -112,17 +100,20 @@ private:
         {
             b = 0;
         }
-//        clectka_x = sech[a+b] / 10;
- //       clectka_y = sech[a+b] % 10;
-        txTransparentBlt(txDC(), x, y, 96, 96, blits, 96*clectka_x, 96*clectka_x,TX_WHITE);
+        kon = a + b;
+        clectka_x = sech[kon] / 10;
+        clectka_y = sech[kon] % 10;
+        txTransparentBlt(txDC(), x*96, y*96, 96, 96, blits, 96*clectka_x, 96*clectka_x,TX_WHITE);
         }
     }
 };
 //classi_konec
 //function_start
-
-
-
+int functia_rotoraya_nujna_dlya_colisii(int u,int y);
+int functia_rotoraya_nujna_dlya_colisii(int u,int y){
+int otvet = y * 7 + u;
+return (otvet);
+}
 
 //function_konec
 int main()
@@ -143,6 +134,33 @@ int timer = 0;
 int x_otrisovki = 0;
 int y_otrisovki = 0;
 //peremennie_konec
+//obiecti_start
+Character character  = {};
+
+character.sech[0] = 00;
+character.sech[1] = 10;
+character.sech[2] = 20;
+character.sech[3] = 01;
+character.sech[4] = 11;
+character.sech[5] = 21;
+character.sech[6] = 02;
+character.sech[7] = 12;
+character.sech[8] = 22;
+character.sech[9] = 03;
+character.sech[10] = 13;
+character.sech[11] = 23;
+
+character.blits = txLoadImage("pixelarts/New Piskel (2).bmp" );
+character.vizible = true;
+character.index = 1;
+character.r = true;
+character.d = false;
+character.u = false;
+character.l = false;
+
+character.x = 3;
+character.y = 2;
+//obiecti_konec
 //podgruzca_kartinok_start
 HDC fon = txLoadImage("pixelarts/fon.bmp");
 //podgruzca_kartinok_start
@@ -246,9 +264,7 @@ karta[34] = 20;
         while(timer != 35)
         {
             vizual.vid_nom = karta[timer];
-            //vizual.vid();
-            vizual.clectka_x = vizual.vid_nom / 10;
-            vizual.clectka_y = vizual.vid_nom % 10;
+            vizual.vid();
             if (x_otrisovki > 6)
             {
                 x_otrisovki = 0;
@@ -265,6 +281,8 @@ karta[34] = 20;
             x_otrisovki += 1;
         }
         timer = 0;
+        character.draw();
+
     if(GetAsyncKeyState(VK_ESCAPE))
         {
             PAGE = "menu";
