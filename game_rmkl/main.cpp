@@ -133,6 +133,11 @@ btn[3] = {0, 0, 200, 40, "Назад", true};
 int timer = 0;
 int x_otrisovki = 0;
 int y_otrisovki = 0;
+bool lampu = true;
+bool lampd = true;
+bool lampl = true;
+bool lampr = true;
+int sost = 0;
 //peremennie_konec
 //obiecti_start
 Character character  = {};
@@ -282,22 +287,93 @@ karta[34] = 20;
         }
         timer = 0;
         character.draw();
+//start_upravlenie
+
+        if(lampu & lampd & lampr)
+        {
         if(GetAsyncKeyState(VK_NUMPAD4))
         {
-            character.l = true;
+            if (!lampl)
+            {
+                lampl = true;
+                //character.d = true;
+                character.l = false;
+            }
+            else
+            {
+                character.l = true;
+                character.r = false;
+                character.d = false;
+                character.u = false;
+                lampl = false;
+            }
+        txSleep(10);
         }
+        }
+        if(lampu & lampd & lampl)
+        {
         if(GetAsyncKeyState(VK_NUMPAD6))
         {
-            character.r = true;
+            if (!lampr)
+            {
+                lampr = true;
+                //character.d = true;
+                character.r = false;
+            }
+            else
+            {
+                character.r = true;
+                character.l = false;
+                character.d = false;
+                character.u = false;
+                lampr = false;
+            }
+        txSleep(10);
         }
+        }
+        if(lampl & lampd & lampr)
+        {
         if(GetAsyncKeyState(VK_NUMPAD8))
         {
-            character.u = true;
+            if (!lampu)
+            {
+                lampu = true;
+               // character.d = true;
+                character.u = false;
+            }
+            else
+            {
+                character.u = true;
+                character.r = false;
+                character.d = false;
+                character.l = false;
+                lampu = false;
+            }
+        txSleep(10);
         }
+        }
+        if(lampu & lampl & lampr)
+        {
         if(GetAsyncKeyState(VK_NUMPAD2))
         {
-            character.d = true;
+            if (!lampd)
+            {
+                lampd = true;
+                //character.r = true;
+                character.d = false;
+            }
+            else
+            {
+                character.d = true;
+                character.r = false;
+                character.l = false;
+                character.u = false;
+                lampd = false;
+            }
+        txSleep(10);
         }
+        }
+
         if (
             karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 20 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 01 &&
             karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 21 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 02 &&
@@ -309,6 +385,7 @@ karta[34] = 20;
                     if(GetAsyncKeyState(VK_NUMPAD6))
                 {
                     character.x -= 1;
+                    txSleep(20);
                 }
             }
         }
@@ -323,6 +400,7 @@ karta[34] = 20;
                     if(GetAsyncKeyState(VK_NUMPAD4))
                 {
                     character.x += 1;
+                    txSleep(20);
                 }
             }
         }
@@ -336,7 +414,8 @@ karta[34] = 20;
             {
                     if(GetAsyncKeyState(VK_NUMPAD8))
                 {
-                    character.y -= 1;
+                    character.y += 1;
+                    txSleep(20);
                 }
             }
         }
@@ -350,10 +429,12 @@ karta[34] = 20;
             {
                     if(GetAsyncKeyState(VK_NUMPAD2))
                 {
-                    character.y += 1;
+                    character.y -= 1;
+                    txSleep(20);
                 }
             }
         }
+//konec_upravlenie
     if(GetAsyncKeyState(VK_ESCAPE))
         {
             PAGE = "menu";
