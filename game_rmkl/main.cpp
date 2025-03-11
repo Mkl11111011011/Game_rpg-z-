@@ -103,7 +103,7 @@ private:
         kon = a + b;
         clectka_x = sech[kon] / 10;
         clectka_y = sech[kon] % 10;
-        txTransparentBlt(txDC(), x*96, y*96, 96, 96, blits, 96*clectka_x, 96*clectka_x,TX_WHITE);
+        txTransparentBlt(txDC(), x*96, y*96, 96, 96, blits, 96*clectka_x, 96*clectka_y,TX_WHITE);
         }
     }
 };
@@ -282,7 +282,78 @@ karta[34] = 20;
         }
         timer = 0;
         character.draw();
-
+        if(GetAsyncKeyState(VK_NUMPAD4))
+        {
+            character.l = true;
+        }
+        if(GetAsyncKeyState(VK_NUMPAD6))
+        {
+            character.r = true;
+        }
+        if(GetAsyncKeyState(VK_NUMPAD8))
+        {
+            character.u = true;
+        }
+        if(GetAsyncKeyState(VK_NUMPAD2))
+        {
+            character.d = true;
+        }
+        if (
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 20 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 01 &&
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 21 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 02 &&
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 12
+            )
+        {
+            if(character.l)
+            {
+                    if(GetAsyncKeyState(VK_NUMPAD6))
+                {
+                    character.x -= 1;
+                }
+            }
+        }
+        if (
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 1] != 20 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 1] != 01 &&
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 1] != 21 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 1] != 02 &&
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 1] != 12
+            )
+        {
+            if(character.r)
+            {
+                    if(GetAsyncKeyState(VK_NUMPAD4))
+                {
+                    character.x += 1;
+                }
+            }
+        }
+         if (
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 7] != 20 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 7] != 01 &&
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 7] != 21 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 7] != 02 &&
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) + 7] != 12
+            )
+        {
+            if(character.d)
+            {
+                    if(GetAsyncKeyState(VK_NUMPAD8))
+                {
+                    character.y -= 1;
+                }
+            }
+        }
+         if (
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 7] != 20 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 7] != 01 &&
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 7] != 21 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 7] != 02 &&
+            karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 7] != 12
+            )
+        {
+            if(character.u)
+            {
+                    if(GetAsyncKeyState(VK_NUMPAD2))
+                {
+                    character.y += 1;
+                }
+            }
+        }
     if(GetAsyncKeyState(VK_ESCAPE))
         {
             PAGE = "menu";
