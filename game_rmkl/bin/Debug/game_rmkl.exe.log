@@ -3022,3 +3022,45 @@ Run file:	C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe
 Directory:	C:\Users\user\Desktop\xt_m\game_rmkl
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe, файл: C:\Users\user\Desktop\TX\TXLib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x00000000004488F0 (64-bit), Flags: CMdRe0, Thread: 0x108C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x000000000040B52C in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: (anonymous namespace)::TX::_txError() at C:/Users/user/Desktop/TX/TXLib.h (10992)
+# 1 0x000000000040B14F in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: (anonymous namespace)::TX::_txBuffer_Delete() at C:/Users/user/Desktop/TX/TXLib.h (10937)
+# 2 0x0000000000417902 in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: (anonymous namespace)::TX::txDeleteDC() at C:/Users/user/Desktop/TX/TXLib.h (13691)
+# 3 0x0000000000417A2A in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: (anonymous namespace)::TX::txDeleteDC() at C:/Users/user/Desktop/TX/TXLib.h (13713)
+
+# 4 0x000000000041FF41 in C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe: main() at C:/Users/user/Desktop/xt_m/game_rmkl/main.cpp (522):
+
+    520:     {
+    521:         txDestroyWindow();
+=>  522:         txDeleteDC(fon);
+    523:     }
+    524: //konec_sostaianie
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Desktop\TX\TXLib.h
+Compiled:	Mar 13 2025 19:26:38, GNU g++ 8.1.0, std=201402L, MinGW-W64 Runtime 6.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Mar 13 2025 19:26:54
+
+Run file:	C:\Users\user\Desktop\xt_m\game_rmkl\bin\Debug\game_rmkl.exe
+Directory:	C:\Users\user\Desktop\xt_m\game_rmkl
+
+--------------------------------------------------

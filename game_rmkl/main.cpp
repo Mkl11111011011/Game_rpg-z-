@@ -246,14 +246,14 @@ karta[34] = 20;
         txBitBlt(txDC(), 0, 0, 800, 600, fon);
         btn[3].draw();
         txSelectFont ("Times", 20);
-        txTextOut (50, 60, "W,A,S,D - движение;");
-        txTextOut (50, 90, "8+(4,2,6) - вперед;");
-        txTextOut (50, 120, "2+(8,6,4) - назад;");
-        txTextOut (50, 150, "6+(8,4,2) - направо;");
-        txTextOut (50, 180, "4+(8,6,2) - налево;");
-        txTextOut (50, 210, "левая кнопка взаимодействия - диалог;");
-        txTextOut (50, 240, "правая кнопка взаимодействия - атака;");
-        txTextOut (50, 270, "задняя кнопка взаимодействия - рывок;");
+        txTextOut (50, 60, "вы слепы , но чувствуете магию");
+        txTextOut (50, 90, "8num - вперед;");
+        txTextOut (50, 120, "2num - назад;");
+        txTextOut (50, 150, "6num - направо;");
+        txTextOut (50, 180, "4num - налево;");
+        txTextOut (50, 210, "задняя кнопка взаимодействия - ходьба;");
+        txTextOut (50, 240, "правая часть экрана показывает направление;");
+        txTextOut (50, 270, "сердце и xp добавляют сердца;");
         if(btn[3].click() || GetAsyncKeyState(VK_ESCAPE))
         {
             PAGE = "menu";
@@ -374,6 +374,81 @@ karta[34] = 20;
         }
         }
 
+        if (!character.d)
+        {
+            txSetColor (RGB(255,30,30), 3);
+            txSetFillColor (RGB(255,234,48));
+            Win32::RoundRect (txDC(), 637, 445, 667, 475, 10, 10);
+            txSelectFont("Times New Roman", 30);
+            txSetColor (RGB(5,0,0));
+            txDrawText(637, 445, 667, 475, "D");
+        }
+        else
+        {
+            txSetColor (RGB(255,234,48), 3);
+            txSetFillColor (RGB(255,30,30));
+            Win32::RoundRect (txDC(), 637, 445, 667, 475, 10, 10);
+            txSelectFont("Times New Roman", 30);
+            txSetColor (RGB(5,0,0));
+            txDrawText(637, 445, 667, 475, "D");
+        }
+        if (!character.u)
+        {
+            txSetColor (RGB(255,30,30), 3);
+            txSetFillColor (RGB(255,234,48));
+            Win32::RoundRect (txDC(), 637, 410, 667, 440, 10, 10);
+            txSelectFont("Times New Roman", 30);
+            txSetColor (RGB(5,0,0));
+            txDrawText(637, 410, 667, 440, "U");
+        }
+        else
+        {
+            txSetColor (RGB(255,234,48), 3);
+            txSetFillColor (RGB(255,30,30));
+            Win32::RoundRect (txDC(), 637, 410, 667, 440, 10, 10);
+            txSelectFont("Times New Roman", 30);
+            txSetColor (RGB(5,0,0));
+            txDrawText(637, 410, 667, 440, "U");
+        }
+        if (!character.l)
+        {
+            txSetColor (RGB(255,30,30), 3);
+            txSetFillColor (RGB(255,234,48));
+            Win32::RoundRect (txDC(), 637, 375, 667, 405, 10, 10);
+            txSelectFont("Times New Roman", 30);
+            txSetColor (RGB(5,0,0));
+            txDrawText(637, 375, 667, 405, "L");
+        }
+        else
+        {
+            txSetColor (RGB(255,234,48), 3);
+            txSetFillColor (RGB(255,30,30));
+            Win32::RoundRect (txDC(), 637, 375, 667, 405, 10, 10);
+            txSelectFont("Times New Roman", 30);
+            txSetColor (RGB(5,0,0));
+            txDrawText(637, 375, 667, 405, "L");
+        }
+        if (!character.r)
+        {
+            txSetColor (RGB(255,30,30), 3);
+            txSetFillColor (RGB(255,234,48));
+            Win32::RoundRect (txDC(), 637, 340, 667, 370, 10, 10);
+            txSelectFont("Times New Roman", 30);
+            txSetColor (RGB(5,0,0));
+            txDrawText(637, 340, 667, 370, "R");
+        }
+        else
+        {
+            txSetColor (RGB(255,234,48), 3);
+            txSetFillColor (RGB(255,30,30));
+            Win32::RoundRect (txDC(), 637, 340, 667, 370, 10, 10);
+            txSelectFont("Times New Roman", 30);
+            txSetColor (RGB(5,0,0));
+            txDrawText(637, 340, 667, 370, "R");
+        }
+
+
+
         if (
             karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 20 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 01 &&
             karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 21 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y) - 1] != 02 &&
@@ -435,6 +510,17 @@ karta[34] = 20;
             }
         }
 //konec_upravlenie
+//start_sostaiania
+    if
+        (
+        karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)] == 20 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)] == 01 &&
+        karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)] == 21 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)] == 02 &&
+        karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)] == 12)
+    {
+        txDestroyWindow();
+        txDeleteDC(fon);
+    }
+//konec_sostaianie
     if(GetAsyncKeyState(VK_ESCAPE))
         {
             PAGE = "menu";
