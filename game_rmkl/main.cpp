@@ -1,5 +1,24 @@
 #include "TXLib.h"
 //structuri_start
+struct Hp
+{
+    int vid_nom;
+    HDC blits;
+    int clectka_x;
+    int clectka_y;
+    int x;
+    int y;
+    bool job;
+    void vid()
+    {
+        clectka_x = vid_nom / 10;
+        clectka_y = vid_nom % 10;
+    }
+    void draw()
+    {
+        txTransparentBlt(txDC(), x, y, 32, 32, blits, 32*clectka_x, 32*clectka_y,TX_WHITE);
+    }
+};
 struct Button
 {
 
@@ -137,7 +156,9 @@ bool lampu = true;
 bool lampd = true;
 bool lampl = true;
 bool lampr = true;
-int sost = 0;
+int hp0 = 40;
+int hp1 = 40;
+int xp = 0;
 //peremennie_konec
 //obiecti_start
 Character character  = {};
@@ -165,6 +186,17 @@ character.l = false;
 
 character.x = 3;
 character.y = 2;
+Hp hp [10];
+hp[0] = {00 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,640 ,0,true};
+hp[1] = {00 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,640 ,33,true};
+hp[2] = {00 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,640 ,66,true};
+hp[3] = {00 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,640 ,99,false};
+hp[4] = {00 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,640 ,132,false};
+hp[5] = {01 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,0 ,480,false};
+hp[6] = {01 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,0 ,447,false};
+hp[7] = {01 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,0 ,414,false};
+hp[8] = {01 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,0 ,381,false};
+hp[9] = {01 , txLoadImage("pixelarts/hp.bmp") ,0 ,0 ,0 ,348,false};
 //obiecti_konec
 //podgruzca_kartinok_start
 HDC fon = txLoadImage("pixelarts/fon.bmp");
@@ -520,7 +552,94 @@ karta[34] = 20;
         txDestroyWindow();
         txDeleteDC(fon);
     }
+    if
+        (
+        karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)] == 22 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)] == 13
+        )
+    {
+        xp += 1;
+    }
+    if
+        (
+        karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)+0] == 03 && karta[functia_rotoraya_nujna_dlya_colisii(character.x,character.y)] == 23
+        )
+    {
+        hp0 = hp0 + 10;
+    }
 //konec_sostaianie
+//start_hpandxp
+ if (xp == 1)
+    {
+    hp[3].job = true;
+ }
+ if (xp <= 0)
+    {
+    hp[3].job = false;
+    hp[4].job = false;
+ }
+     if (xp >= 2)
+    {
+    hp[3].job = true;
+    hp[4].job = true;
+ }
+if (hp0 >= 20 & hp0 <=40)
+    {
+    hp[1].vid_nom = 10;
+    hp[2].vid_nom = 10;
+    hp[3].vid_nom = 10;
+    hp[4].vid_nom = 10;
+ }
+ if (hp0 >= 41 & hp0 <=60)
+    {
+    hp[1].vid_nom = 00;
+    hp[2].vid_nom = 10;
+    hp[3].vid_nom = 10;
+    hp[4].vid_nom = 10;
+ }
+if (hp0 >= 61 & hp0 <=80)
+    {
+    hp[1].vid_nom = 00;
+    hp[2].vid_nom = 00;
+    hp[3].vid_nom = 10;
+    hp[4].vid_nom = 10;
+ }
+if (hp0 >= 81 & hp0 <=100)
+    {
+    hp[1].vid_nom = 00;
+    hp[2].vid_nom = 00;
+    hp[3].vid_nom = 00;
+    hp[4].vid_nom = 10;
+ }
+if (hp0 >= 101 & hp0 <=120)
+    {
+    hp[1].vid_nom = 00;
+    hp[2].vid_nom = 00;
+    hp[3].vid_nom = 00;
+    hp[4].vid_nom = 00;
+ }
+if (hp0 < 20)
+{
+      txDestroyWindow();
+        txDeleteDC(fon);
+}
+hp[0].vid();
+hp[1].vid();
+hp[2].vid();
+hp[3].vid();
+hp[4].vid();
+hp[0].draw();
+hp[1].draw();
+hp[2].draw();
+if(hp[3].job)
+{
+    hp[3].draw();
+}
+if(hp[4].job)
+{
+    hp[4].draw();
+}
+
+//konec_hpandxp
     if(GetAsyncKeyState(VK_ESCAPE))
         {
             PAGE = "menu";
